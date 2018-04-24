@@ -10,10 +10,10 @@
                 }
             };
             $scope.header = {
-                url: '/qsconsulting/header.html'
+                url: '/header.html'
             };
             $scope.footer = {
-                url: '/qsconsulting/footer.html'
+                url: '/footer.html'
             };
         }
     ]);
