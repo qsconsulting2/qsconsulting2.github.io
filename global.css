@@ -50,11 +50,101 @@ a.disabled{
     color: #fff;
     text-decoration: underline;
 }
+.columns{
+    float: left;
+    position: relative;
+    box-sizing: border-box;
+}
+.row{
+    width: 100%;
+    margin: 0 auto;
+}
+.row:before{
+    content: "";
+    display: table;
+}
+.row:after{
+    content: "";
+    display: table;
+}
+.row:after, .clearfix:after{
+    clear: both;
+}
+.row .one.columns {
+    width: 4.255326%;
+}
+
+.row .two.columns {
+    width: 10.638315%;
+}
+
+.row .three.columns {
+    width: 17.021304%;
+}
+
+.row .four.columns {
+    width: 25.404293%;
+}
+
+.row .five.columns {
+    width: 29.787282%;
+}
+
+.row .six.columns {
+    width: 36.170271%;
+}
+
+.row .seven.columns {
+    width: 42.55326%;
+}
+
+.row .eight.columns {
+    width: 48.936249%;
+}
+
+.row .nine.columns {
+    width: 55.319238%;
+}
+
+.row .ten.columns {
+    width: 63.829999%;
+}
+
+.row .eleven.columns {
+    width: 70.085216%;
+}
+
+.row .twelve.columns {
+    width: 74.468205%;
+}
+
+.row .thirteen.columns {
+    width: 80.851194%;
+}
+
+.row .fourteen.columns {
+    width: 87.234183%;
+}
+
+.row .fifteen.columns {
+    width: 93.617172%;
+}
+
+.row .sixteen.columns {
+    width: 100%;
+}
 .post{
     border-bottom: 1px solid #ccc;
 }
 .leftcontent > *{
     border-bottom: 1px solid #ccc;
+}
+#sidebar{
+    padding: 20px;
+    margin-left: 0;
+}
+#sidebar .widget{
+    margin-bottom: 20px;
 }
 h1{
     font-size: 30px;
@@ -67,4 +157,12 @@ h3{
 }
 h4{
     font-size: 22px;
+}
+.p-link{
+    color: inherit;
+    text-decoration: none;
+}
+.p-link:hover{
+    color: inherit;
+    text-decoration: none;
 }

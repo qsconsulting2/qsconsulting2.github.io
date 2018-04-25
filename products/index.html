@@ -21,10 +21,15 @@
     <script src="./js/products.js" charset="utf-8"></script>
 </head>
 <body ng-app="body" ng-controller="bodyController">
-    <div class="container">
+    <div class="_container">
         <div ng-include="header.url"></div>
         <div class="content">
+            <div class="ten columns leftcontent">
 
+            </div>
+            <div ng-include="sidebar.url" id="sidebar" class="six columns">
+                
+            </div>
         </div>
         <div class="footer" ng-include="footer.url"></div>
     </div>

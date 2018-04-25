@@ -15,6 +15,9 @@
             $scope.footer = {
                 url: '/footer.html'
             };
+            $scope.sidebar = {
+                url: '/sidebar.html'
+            };
         }
     ]);
 })();

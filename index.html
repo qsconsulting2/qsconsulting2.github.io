@@ -23,21 +23,24 @@
 <body ng-app="body" ng-controller="bodyController">
     <div class="_container">
         <div ng-include="header.url"></div>
-        <div class="content">
-            <div id="sidebar">
-
-            </div>
-            <div class="leftcontent">
+        <div class="row content">
+            <div class="ten columns leftcontent">
                 <h1>Home</h1>
                 <div class="post">
                     <br>
                     <h1>
                         Providing security-minded Software Development and Cryptocurrency Solutions.
                     </h1>
+                    <p>
+                        Contact <strong><a href="mailto:q@qsconsulting.biz" class="p-link">q@qsconsulting.biz</a></strong> for custom programming & visit the blog for example usage of products and work.
+                    </p>
                 </div>
             </div>
+            <div ng-include="sidebar.url" id="sidebar" class="six columns">
+                
+            </div>
         </div>
-        <div class="footer" ng-include="footer.url"></div>
+        <div class="row footer" ng-include="footer.url"></div>
     </div>
 </body>
 </html>
