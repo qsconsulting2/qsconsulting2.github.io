@@ -44,7 +44,25 @@
                         {{post.title}}
                     </h1>
                     <p class="post-content">
-                        {{post.content}}
+                        <script class="self-deleting-script" post-id="{{post.___id___}}">
+                            var SDS = document.querySelectorAll('.self-deleting-script');
+                            var _self_ = SDS[SDS.length-1];
+                            var post_id;
+                            function whyDoesThisWork(){
+                                if(_self_.getAttribute('post-id') != "{{post.___id___}}"){
+                                    post_id = _self_.getAttribute('post-id');
+                                    firebase.database().ref('posts').once('value', function(v){
+                                        let posts = v.val();
+                                        if(_self_.parentElement){
+                                            _self_.parentElement.innerHTML = posts[post_id].content;
+                                        }
+                                    });
+                                }else{
+                                    setTimeout(whyDoesThisWork, 500);
+                                }
+                            }
+                            setTimeout(whyDoesThisWork, 500);
+                        </script>
                     </p>
                     <div class="post-tags">
                         <span>
