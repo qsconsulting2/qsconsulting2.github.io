@@ -5,6 +5,7 @@
     <a class="nav-link" ng-class="checkTab('home')" href="/">Home</a>
     <a class="nav-link" ng-class="checkTab('blog')" href="/blog">Blog</a>
     <a class="nav-link" ng-class="checkTab('products')" href="/products">Products</a>
+    <a class="nav-link" ng-if="admins[currentUser.uid] != undefined" href="/post">Create a post</a>
     <span class="nav-right">
     <span class="span-one-element" ng-show="loggedIn == false">
         <a class="nav-link" href="#" id="lgin">Login</a>

@@ -17,7 +17,9 @@
         if(bodyscope != undefined){
           bodyscope.loggedIn = true;
           bodyscope.removePost = function(postID){
-            firebase.database().ref(`posts/${postID}`).remove();
+            if(prompt('Are you sure you want to delete this post?\nType "Yes" to continue.') == "Yes"){
+              firebase.database().ref(`posts/${postID}`).remove();
+            }
           };
           firebase.database().ref('users').on('value', (u)=>{
             bodyscope.users = u.val();
@@ -91,8 +93,22 @@
   String.prototype.separate = function(amt) {
     return this.match(new RegExp(`.{1,${amt}}`, 'g'));
   };
+  function objToReferableArray(obj){
+    let rv = [];
+    for(let kn in obj){
+      let kv = obj[kn];
+      kv.___id___ = kn;
+      rv.push(kv);
+    }
+    return rv;
+  }
   function updateScope(scope){
     scope.$apply();
+  }
+  function updatePosts(posts){
+    if(bodyscope != undefined){
+      bodyscope.posts = objToReferableArray(posts);
+    }
   }
   var app = angular.module('mainApp', []);
   app.controller("bodyController", [
@@ -101,6 +117,7 @@
       bodyscope = $scope;
       $scope.viewMode = window.location.search==''?'normal':(window.location.search.startsWith('?s=')?'search':(window.location.search.startsWith('?p=')?'targetPost':'notFound'));
       $scope.users = [];
+      $scope.posts = [];
       $scope.loggedIn = false;
       $scope.currentUser = currentUser;
       $scope.rememberMe = window.localStorage.getItem('persistence')=='local'?true:false;
@@ -126,6 +143,12 @@
       };
     }
   ]);
+  firebase.database().ref('posts').on('value', function(v){updatePosts(v.val());});
+  firebase.database().ref('admins').on('value', function(v){
+    if(bodyscope != undefined){
+      bodyscope.admins = v.val();
+    }
+  });
   window.addEventListener('load', function(){
     let checklist = {
       'listeningToLogin': false,

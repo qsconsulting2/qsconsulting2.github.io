@@ -1,0 +1,13 @@
+#textarea-create-post{
+    width: 100%;
+    height: 300px;
+}
+h1{
+    font-family: "Comic Sans MS";
+}
+#submitPost{
+    font-family: "Comic Sans MS";
+    font-size: 36px;
+    margin: auto;
+    display: block;
+}
