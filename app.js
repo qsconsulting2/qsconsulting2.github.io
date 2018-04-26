@@ -107,7 +107,37 @@
   }
   function updatePosts(posts){
     if(bodyscope != undefined){
+      bodyscope.postsOriginal = posts;
       bodyscope.posts = objToReferableArray(posts);
+      bodyscope.postsDual = {};
+      bodyscope.posts.forEach((p)=>{
+        bodyscope.postsDual[p.___id___] = p;
+      });
+      if(bodyscope.viewMode == 'targetPost'){
+        if(bodyscope.postsDual != undefined){
+          if(bodyscope.query){
+            bodyscope.post = bodyscope.postsDual[bodyscope.query];
+          }
+        }
+      }
+      if(bodyscope.viewMode == 'tagSearch'){
+        if(bodyscope.postsDual != undefined){
+          if(bodyscope.query){
+            bodyscope.filteredPosts = bodyscope.posts.filter((p)=>{
+              return p.tags.includes(bodyscope.query);
+            });
+          }
+        }
+      }
+      if(bodyscope.viewMode == 'search'){
+        if(bodyscope.postsDual != undefined){
+          if(bodyscope.query){
+            bodyscope.filteredPosts = bodyscope.posts.filter((p)=>{
+              return (p.tags.includes(bodyscope.query) || p.content.includes(bodyscope.query) || p.title.includes(bodyscope.query));
+            });
+          }
+        }
+      }
     }
   }
   var app = angular.module('mainApp', []);
@@ -115,9 +145,16 @@
     '$scope',
     function($scope){
       bodyscope = $scope;
-      $scope.viewMode = window.location.search==''?'normal':(window.location.search.startsWith('?s=')?'search':(window.location.search.startsWith('?p=')?'targetPost':'notFound'));
+      $scope.viewMode = window.location.search==''?'normal':(window.location.search.startsWith('?s=')?'search':(window.location.search.startsWith('?p=')?'targetPost':(window.location.search.startsWith('?t=')?'tagSearch':'notFound')));
+      if($scope.viewMode != 'normal' && $scope.viewMode != 'notFound'){
+        $scope.query = window.location.search.replace(/\?(s|t|p)\=/,'');
+      }else{
+        $scope.query = '';
+      }
       $scope.users = [];
       $scope.posts = [];
+      $scope.postsOriginal = {};
+      $scope.filteredPosts = [];
       $scope.loggedIn = false;
       $scope.currentUser = currentUser;
       $scope.rememberMe = window.localStorage.getItem('persistence')=='local'?true:false;

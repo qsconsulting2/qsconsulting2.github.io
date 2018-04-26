@@ -56,7 +56,9 @@
         </div>
         <div class="row content" ng-if="viewMode == 'search'">
             <div class="ten columns leftcontent">
-
+                <div ng-repeat="post in filteredPosts" ng-include="'/post-singleton.html'" class="post">
+            
+                </div>
             </div>
             <div ng-include="sidebar.url" id="sidebar" class="six columns">
                 
@@ -64,7 +66,27 @@
         </div>
         <div class="row content" ng-if="viewMode == 'targetPost'">
             <div class="ten columns leftcontent">
+                <div class="post" ng-include="'/post-singleton.html'">
 
+                </div>
+            </div>
+            <div ng-include="sidebar.url" id="sidebar" class="six columns">
+                
+            </div>
+        </div>
+        <div class="row content" ng-if="viewMode == 'tagSearch'">
+            <div class="ten columns leftcontent">
+                <div ng-repeat="post in filteredPosts" ng-include="'/post-singleton.html'" class="post">
+                
+                </div>
+            </div>
+            <div ng-include="sidebar.url" id="sidebar" class="six columns">
+                
+            </div>
+        </div>
+        <div class="row content" ng-if="viewMode == 'notFound'">
+            <div class="ten columns leftcontent">
+                <h1>404 Not Found</h1>
             </div>
             <div ng-include="sidebar.url" id="sidebar" class="six columns">
                 

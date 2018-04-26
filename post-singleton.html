@@ -1,0 +1,34 @@
+<h1 class="post-title">
+    <a href="/?p={{post.___id___}}" class="p-link">
+        {{post.title}}
+    </a>
+</h1>
+<p class="post-content">
+    <script class="self-deleting-script" post-id="{{post.___id___}}">
+            var SDS = document.querySelectorAll('.self-deleting-script');
+            var _self_ = SDS[SDS.length-1];
+            var post_id;
+            function whyDoesThisWork(){
+                if(_self_.getAttribute('post-id') != "{{post.___id___}}" && _self_.getAttribute('post-id') != undefined && _self_.getAttribute('post-id') != ''){
+                    post_id = _self_.getAttribute('post-id');
+                    firebase.database().ref('posts').once('value', function(v){
+                        let posts = v.val();
+                        if(_self_.parentElement){
+                            _self_.parentElement.innerHTML = posts[post_id].content;
+                        }
+                    });
+                }else{
+                    setTimeout(whyDoesThisWork, 500);
+                }
+            }
+            setTimeout(whyDoesThisWork, 500);
+    </script>
+</p>
+<div class="post-tags">
+    <span>
+        Tags: 
+    </span><span ng-repeat="tag in post.tags">
+        <a href="/?t={{tag}}">{{tag}}</a>
+    </span>
+</div>
+<button ng-if="admins[currentUser.uid] != undefined" ng-click="removePost(post.___id___)">Remove post</button>
