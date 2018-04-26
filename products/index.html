@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Products</title>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyC80ha5bCqpn502_bvk_DEjUM_K60UKDJo",
+            authDomain: "qsconsulting-e5bae.firebaseapp.com",
+            databaseURL: "https://qsconsulting-e5bae.firebaseio.com",
+            projectId: "qsconsulting-e5bae",
+            storageBucket: "qsconsulting-e5bae.appspot.com",
+            messagingSenderId: "592412780137"
+        };
+        firebase.initializeApp(config);
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js" integrity="sha384-lZmvU/TzxoIQIOD9yQDEpvxp6wEU32Fy0ckUgOH4EIlMOCdR823rg4+3gWRwnX1M" crossorigin="anonymous"></script>
@@ -18,20 +31,21 @@
     <script src="https://code.angularjs.org/1.6.9/angular-sanitize.min.js" charset="utf-8"></script>
     <link href="./css/products.css" rel="stylesheet">
     <link rel="stylesheet" href="/global.css">
+    <script src="/app.js" charset="utf-8"></script>
     <script src="./js/products.js" charset="utf-8"></script>
 </head>
-<body ng-app="body" ng-controller="bodyController">
+<body ng-app="mainApp" ng-controller="bodyController">
     <div class="_container">
         <div ng-include="header.url"></div>
-        <div class="content">
+        <div class="row content" ng-if="viewMode == 'normal'">
             <div class="ten columns leftcontent">
-
+                
             </div>
             <div ng-include="sidebar.url" id="sidebar" class="six columns">
                 
             </div>
         </div>
-        <div class="footer" ng-include="footer.url"></div>
+        <div class="row footer" ng-include="footer.url"></div>
     </div>
 </body>
 </html>

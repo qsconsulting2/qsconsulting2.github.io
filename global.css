@@ -34,13 +34,52 @@ a.disabled{
     width: 100%;
     background: linear-gradient(to top, black, black 40%, #333 75%);
 }
-.my-nav a.nav-link{
+.my-nav .nav-link, .nav-button, .nav-element{
     color: white;
     font-weight: bold;
+}
+.nav-element{
+    margin: auto 0;
+}
+.my-nav .nav-link, .nav-button:not(:last-child){
     border: 1px solid;
     border-top: 0;
     border-bottom: 0;
-    border-image: linear-gradient(to right, darkgrey, #4c4c4c) 0 1 0 0;;
+    border-image: linear-gradient(to right, darkgrey, #4c4c4c) 0 1 0 0;
+}
+.span-one-element{
+    display: flex;
+}
+.my-nav > .span-one-element > *{
+    border: none;
+}
+.my-nav > .span-one-element:not(:last-child){
+    border: 1px solid;
+    border-top: 0;
+    border-bottom: 0;
+    border-image: linear-gradient(to right, darkgrey, #4c4c4c) 0 1 0 0;
+}
+.nav-right{
+    margin: auto 0 auto auto;
+    padding-right: 16px;
+}
+.nav-checkbox{
+    margin: auto 0px auto 16px;
+}
+.checkbox-to-button{
+    -webkit-appearance: none;
+}
+.checkbox-to-button:checked:after{
+    content: 'X';
+}
+.checkbox-to-button:after{
+    content: '\2713';
+}
+.checkbox-to-button.remember-me:before{
+    content: 'Remember me: ';
+}
+label.nav-link{
+    padding-left: 10px;
 }
 .footer{
     background-color: #070707;
@@ -146,17 +185,34 @@ a.disabled{
 #sidebar .widget{
     margin-bottom: 20px;
 }
+.topprod{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+.widget ul li{
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+}
 h1{
     font-size: 30px;
+    color: #1b1b1b;
+    line-height: 1.6;
 }
 h2{
     font-size: 26px;
+    color: #1b1b1b;
+    line-height: 1.6;
 }
 h3{
     font-size: 24px;
+    color: #1b1b1b;
+    line-height: 1.6;
 }
 h4{
     font-size: 22px;
+    color: #1b1b1b;
+    line-height: 1.6;
 }
 .p-link{
     color: inherit;
