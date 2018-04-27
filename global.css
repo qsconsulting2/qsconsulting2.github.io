@@ -12,6 +12,9 @@ body{
     display: block;
     word-wrap: break-word
 }
+.center{
+    text-align: center;
+}
 .search-form input{
     width: 100%;
 }
@@ -34,7 +37,7 @@ a.disabled{
     text-decoration: none;
 }
 .my-nav-bg{
-    background: linear-gradient(to top, black, black 40%, #333 75%);
+    background: linear-gradient(to top, slategrey, slategrey 40%, rgba(112, 128, 144, 0.514) 75%, rgba(0,0,0,0));
 }
 .my-nav{
     width: 100%;
@@ -46,13 +49,24 @@ a.disabled{
 .my-navbar-toggler{
     width: 100%;
     margin: 0 auto;
-    border: darkgrey 5px solid !important;
+    border: deepskyblue 5px solid !important;
 }
 .my-navbar-toggler:focus{
     width: 100%;
     margin: 0 auto;
-    border: darkgrey 5px solid !important;
+    border: deepskyblue 5px solid !important;
     outline: none;
+}
+.my-aside{
+    border-bottom: deepskyblue 3px solid !important;
+    border-bottom-left-radius: 6%;
+    border-bottom-right-radius: 6%;
+    background: slategrey;
+}
+.my-nav-mobile{
+    background: slategrey;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
 }
 .my-nav-mobile .nav-link, .my-nav-mobile .nav-button, .my-nav-mobile .nav-element{
     color: white !important;
@@ -61,17 +75,25 @@ a.disabled{
 .nav-element{
     margin: auto 0;
 }
-.my-nav .nav-link, .my-nav .nav-button:not(:last-child){
-    border: 1px solid;
+.my-nav *:not(:last-child){
+    margin-top: 3px;
+    border: 3px solid;
     border-top: 0;
     border-bottom: 0;
-    border-image: linear-gradient(to right, darkgrey, #4c4c4c) 0 1 0 0;
+    border-left: 0;
+    border-right: 3px rgba(0, 191, 255, 0.4) solid;
+    border-radius: 8%;
 }
-.my-nav-mobile .nav-link, .my-nav-mobile .nav-button:not(:last-child){
-    border: 2px solid;
+.my-nav-mobile .nav-item > *{
+    text-align: center;
+}
+.my-nav-mobile .nav-item:not(:last-child) > *{
+    text-align: center;
+    border: 3px solid;
     border-left: 0;
     border-right: 0;
-    border-image: linear-gradient(to bottom, darkgrey, #4c4c4c) 0 0 40 0;
+    border-image: linear-gradient(to bottom, deepskyblue, rgba(0, 191, 255, 0.5)) 0 0 80 0;
+    border-radius: 6%;
 }
 .span-one-element{
     display: flex;
@@ -214,23 +236,39 @@ label.nav-link{
     border-bottom: 1px solid #ccc;
 }
 #sidebar{
-    padding: 20px;
+    padding: 20px 0;
     margin-left: 0;
+    border-left: 1px solid #ccc;
 }
 #sidebar .widget{
     margin-bottom: 20px;
 }
+#sidebar h2{
+    text-align: center;
+    margin: 4px 0 20px 0;
+    font-size: 18px;
+    color: white;
+    border-bottom: 3px solid rgb(175, 184, 193);
+    padding: 6px;
+    background: linear-gradient(to top, slategrey, slategrey 40%, rgba(112, 128, 144, 0.514) 75%, rgba(0,0,0,0));
+}
 .widget{
     font-size: 12px;
+}
+.widget ul{
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    list-style: none;
+}
+.widget ul li{
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
 }
 .topprod{
     border-bottom: 1px solid #ccc;
     margin-bottom: 15px;
     padding-bottom: 15px;
-}
-.widget ul li{
-    padding: 10px 0;
-    border-top: 1px solid #ccc;
 }
 h1{
     font-size: 30px;

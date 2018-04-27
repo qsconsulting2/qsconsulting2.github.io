@@ -109,6 +109,15 @@
     if(bodyscope != undefined){
       bodyscope.postsOriginal = posts;
       bodyscope.posts = objToReferableArray(posts);
+      bodyscope.posts.sort((p1, p2)=>{
+        if(p1.time < p2.time){
+          return 1;
+        }else if(p1.time > p2.time){
+          return -1;
+        }else{
+          return 0
+        }
+      });
       bodyscope.postsDual = {};
       bodyscope.posts.forEach((p)=>{
         bodyscope.postsDual[p.___id___] = p;
@@ -124,8 +133,9 @@
         if(bodyscope.postsDual != undefined){
           if(bodyscope.query){
             bodyscope.filteredPosts = bodyscope.posts.filter((p)=>{
-              return p.tags.includes(bodyscope.query);
+              return p.tags.includes(decodeURI(bodyscope.query));
             });
+            bodyscope.showContent = false;
           }
         }
       }
@@ -133,7 +143,7 @@
         if(bodyscope.postsDual != undefined){
           if(bodyscope.query){
             bodyscope.filteredPosts = bodyscope.posts.filter((p)=>{
-              return (p.tags.includes(bodyscope.query) || p.content.includes(bodyscope.query) || p.title.includes(bodyscope.query));
+              return (p.tags.includes(decodeURI(bodyscope.query)) || p.content.includes(decodeURI(bodyscope.query)) || p.title.includes(decodeURI(bodyscope.query)));
             });
           }
         }
@@ -148,9 +158,16 @@
       $scope.viewMode = window.location.search==''?'normal':(window.location.search.startsWith('?s=')?'search':(window.location.search.startsWith('?p=')?'targetPost':(window.location.search.startsWith('?t=')?'tagSearch':'notFound')));
       if($scope.viewMode != 'normal' && $scope.viewMode != 'notFound'){
         $scope.query = window.location.search.replace(/\?(s|t|p)\=/,'');
+        $scope.search = window.location.search.match(/\?(.*)(\=(.*))?/)[1];
       }else{
         $scope.query = '';
+        if($scope.viewMode == 'notFound'){
+          $scope.search = window.location.search.match(/\?(.*)(\=(.*))?/)[1];
+        }else{
+          $scope.search = '';
+        }
       }
+      $scope.showContent = true;
       $scope.users = [];
       $scope.posts = [];
       $scope.postsOriginal = {};

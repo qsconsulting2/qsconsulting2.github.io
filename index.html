@@ -85,13 +85,17 @@
             </div>
         </div>
         <div class="row content" ng-if="viewMode == 'notFound'">
-            <div class="ten columns leftcontent">
-                <h1>404 Not Found</h1>
+            <div class="ten columns leftcontent center">
+                <h1>400 Bad Request</h1>
+                <h6>
+                    "{{search}}" is not a valid query
+                </h6>
             </div>
             <div ng-include="sidebar.url" id="sidebar" class="six columns">
                 
             </div>
         </div>
+        <input type="hidden" id="showContent" ng-value="showContent">
         <div class="row footer" ng-include="footer.url"></div>
     </div>
 </body>

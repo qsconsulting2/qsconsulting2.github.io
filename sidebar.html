@@ -25,8 +25,27 @@
         </div>
     </form>
 </div>
-<div ng-repeat="post in posts" class="widget">
-    <a class="p-link post-title" href="/?p={{post.___id___}}">
-        {{post.title}}
-    </a>
+<div class="widget">
+    <h2>
+        Recent Posts
+    </h2>
+    <ul>
+        <li ng-repeat="post in posts">
+            <a class="p-link post-title" href="/?p={{post.___id___}}">
+                {{post.title}}
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="widget">
+    <h2>
+        Recent Comments
+    </h2>
+    <ul>
+        <!-- <li ng-repeat="post in posts">
+            <a class="p-link post-title" href="/?p={{post.___id___}}">
+                {{post.title}}
+            </a>
+        </li> -->
+    </ul>
 </div>
