@@ -1,19 +1,58 @@
 <h1 class="row" id="header">
     <a href="/" class="header-link">Q'S Consulting</a>
 </h1>
-<nav class="row nav my-nav">
+<!-- BEGIN DESKTOP NAVBAR -->
+<nav class="row nav my-nav my-nav-bg d-none d-sm-flex">
     <a class="nav-link" ng-class="checkTab('home')" href="/">Home</a>
     <a class="nav-link" ng-class="checkTab('blog')" href="/blog">Blog</a>
     <a class="nav-link" ng-class="checkTab('products')" href="/products">Products</a>
     <a class="nav-link" ng-if="admins[currentUser.uid] != undefined" href="/post">Create a post</a>
     <span class="nav-right">
-    <span class="span-one-element" ng-show="loggedIn == false">
-        <a class="nav-link" href="#" id="lgin">Login</a>
-        <input class="nav-checkbox nav-button checkbox-to-button remember-me" name="rememberMe" type="checkbox" ng-change="fbSetPersistence(rememberMe)" ng-model="rememberMe">
+        <span class="span-one-element" ng-show="loggedIn == false">
+            <a class="nav-link" href="#" id="lgin">Login</a>
+            <input class="nav-checkbox nav-button checkbox-to-button remember-me" name="rememberMe" type="checkbox" ng-change="fbSetPersistence(rememberMe)" ng-model="rememberMe">
+        </span>
+        <span class="span-one-element" ng-show="loggedIn == true">
+            <a class="nav-link" href="#" name="lgout" id="lgout">Log out</a>
+            <span class="nav-element">{{currentUser.name}}</span>
+        </span>
     </span>
-    <span class="span-one-element" ng-show="loggedIn == true">
-        <a class="nav-link" href="#" name="lgout" id="lgout">Log out</a>
-        <span class="nav-element">{{currentUser.name}}</span>
-    </span>
-</span>
 </nav>
+<!-- END DESKTOP NAVBAR -->
+<!-- BEGIN MOBILE NAVBAR -->
+<aside class="my-aside col-lg-12 h-md-80 p-0 bg-dark fixed-top d-sm-none">
+    <nav class="navbar navbar-expand-sm navbar-dark my-nav-mobile d-flex d-sm-none">
+        <button class="navbar-toggler my-navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMobile">
+            <ul class="flex-column w-100 flex-lg-row navbar-nav my-nav-mobile justify-content-center align-items-center align-items-sm-start text-left text-lg-center">
+                <li class="nav-item w-100">
+                    <a class="nav-link" ng-class="checkTab('home')" href="/">Home</a>
+                </li>
+                <li class="nav-item w-100">
+                    <a class="nav-link" ng-class="checkTab('blog')" href="/blog">Blog</a>
+                </li>
+                <li class="nav-item w-100">
+                    <a class="nav-link" ng-class="checkTab('products')" href="/products">Products</a>
+                </li>
+                <li class="nav-item w-100">
+                    <a class="nav-link" ng-if="admins[currentUser.uid] != undefined" href="/post">Create a post</a>
+                </li>
+                <li class="nav-item w-100" ng-show="loggedIn == false">
+                    <a class="nav-link" href="#" id="lgin">Login</a>
+                </li>
+                <li class="nav-item w-100" ng-show="loggedIn == false">
+                    <input class="nav-checkbox nav-button checkbox-to-button remember-me" name="rememberMe" type="checkbox" ng-change="fbSetPersistence(rememberMe)" ng-model="rememberMe">
+                </li>
+                <li class="nav-item w-100" ng-show="loggedIn == true">
+                    <a class="nav-link" href="#" name="lgout" id="lgout">Log out</a>
+                </li>
+                <li class="nav-item w-100" ng-show="loggedIn == true">
+                    <span class="nav-element">{{currentUser.name}}</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</aside>
+<!-- END MOBILE NAVBAR -->
