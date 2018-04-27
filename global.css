@@ -264,4 +264,7 @@ h4{
     body{
         padding-top: 70px;
     }
+    .nav-checkbox{
+        margin: auto 0;
+    }
 }
