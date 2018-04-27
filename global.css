@@ -129,10 +129,10 @@ a.disabled{
 .checkbox-to-button{
     -webkit-appearance: none;
 }
-.checkbox-to-button:checked:after{
+.checkbox-to-button:after{
     content: 'X';
 }
-.checkbox-to-button:after{
+.checkbox-to-button:checked:after{
     content: '\2713';
 }
 .checkbox-to-button.remember-me:before{
