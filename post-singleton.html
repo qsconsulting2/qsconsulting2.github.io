@@ -31,8 +31,9 @@
 <div class="post-tags">
     <span>
         Tags: 
-    </span><span ng-repeat="tag in post.tags">
+    </span>
+    <span ng-repeat="tag in post.tags">
         <a href="/?t={{tag}}">{{tag}}</a>
     </span>
 </div>
-<button ng-if="admins[currentUser.uid] != undefined" ng-click="removePost(post.___id___)">Remove post</button>
+<button ng-if="admins[currentUser.uid] != undefined" class="post-remove" ng-click="removePost(post.___id___)">Remove post</button>
