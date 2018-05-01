@@ -90,6 +90,15 @@
     }
     return rv;
   };
+  Array.prototype.multiIncludes = function(){
+    let foundAll = true;
+    [...arguments].forEach((arg)=>{
+      if(!this.includes(arg)){
+        foundAll = false;
+      }
+    });
+    return foundAll;
+  };
   String.prototype.separate = function(amt) {
     return this.match(new RegExp(`.{1,${amt}}`, 'g'));
   };
@@ -129,6 +138,10 @@
           }
         }
       }
+      // FOR TAG SEARCH
+      // Add search input for tags
+      // JSON.stringify the input as an array, send to url
+      // JSON.parse the query for query.t 
       if(bodyscope.viewMode == 'tagSearch'){
         if(bodyscope.postsDual != undefined){
           if(bodyscope.query){
