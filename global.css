@@ -23,6 +23,7 @@ a.disabled{
     color: gray;
     pointer-events: none;
 }
+/* Header stuff */
 #header{
     padding: 20px 0;
     font-size: 42px;
@@ -37,6 +38,7 @@ a.disabled{
     color: black;
     text-decoration: none;
 }
+/* Nav stuff */
 .my-nav-bg{
     background: linear-gradient(to top, slategrey, slategrey 40%, rgba(112, 128, 144, 0.514) 75%, rgba(0,0,0,0));
 }
@@ -149,89 +151,7 @@ label.nav-link{
     color: #fff;
     text-decoration: underline;
 }
-.columns{
-    float: left;
-    position: relative;
-    box-sizing: border-box;
-}
-.row{
-    width: 100%;
-    margin: 0 auto;
-}
-.row:before{
-    content: "";
-    display: table;
-}
-.row:after{
-    content: "";
-    display: table;
-}
-.row:after, .clearfix:after{
-    clear: both;
-}
-.row .one.columns {
-    width: 4.255326%;
-}
-
-.row .two.columns {
-    width: 10.638315%;
-}
-
-.row .three.columns {
-    width: 17.021304%;
-}
-
-.row .four.columns {
-    width: 25.404293%;
-}
-
-.row .five.columns {
-    width: 29.787282%;
-}
-
-.row .six.columns {
-    width: 36.170271%;
-}
-
-.row .seven.columns {
-    width: 42.55326%;
-}
-
-.row .eight.columns {
-    width: 48.936249%;
-}
-
-.row .nine.columns {
-    width: 55.319238%;
-}
-
-.row .ten.columns {
-    width: 63.829999%;
-}
-
-.row .eleven.columns {
-    width: 70.085216%;
-}
-
-.row .twelve.columns {
-    width: 74.468205%;
-}
-
-.row .thirteen.columns {
-    width: 80.851194%;
-}
-
-.row .fourteen.columns {
-    width: 87.234183%;
-}
-
-.row .fifteen.columns {
-    width: 93.617172%;
-}
-
-.row .sixteen.columns {
-    width: 100%;
-}
+/* Post stuff */
 .post{
     border-bottom: 1px solid #ccc;
 }
@@ -274,6 +194,7 @@ label.nav-link{
 .post-remove:focus{
     outline: none;
 }
+/* Base content design */
 .leftcontent > *{
     border-bottom: 1px solid #ccc;
 }
@@ -316,26 +237,6 @@ label.nav-link{
     margin-bottom: 15px;
     padding-bottom: 15px;
 }
-h1{
-    font-size: 30px;
-    color: #1b1b1b;
-    line-height: 1.6;
-}
-h2{
-    font-size: 26px;
-    color: #1b1b1b;
-    line-height: 1.6;
-}
-h3{
-    font-size: 24px;
-    color: #1b1b1b;
-    line-height: 1.6;
-}
-h4{
-    font-size: 22px;
-    color: #1b1b1b;
-    line-height: 1.6;
-}
 .p-link{
     color: inherit;
     text-decoration: none;
@@ -344,6 +245,7 @@ h4{
     color: inherit;
     text-decoration: none;
 }
+/* Exceptions for when device is mobile */
 @media only screen and (max-width: 768px){
     body{
         padding-top: 70px;

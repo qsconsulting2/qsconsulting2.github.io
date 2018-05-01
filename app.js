@@ -216,7 +216,8 @@
     let checklist = {
       'listeningToLogin': false,
       'listeningToLogout': false,
-      'retrievedPersistence': false
+      'retrievedPersistence': false,
+      'updateViewCount': false
     };
     setInterval(function(){
       if(document.querySelector("#lgin") && !checklist.listeningToLogin){
@@ -233,6 +234,35 @@
         }
         persistence = window.localStorage.getItem('persistence');
         checklist.retrievedPersistence = true;
+      }
+      if(bodyscope.post){
+        if(!checklist.updateViewCount){
+          if(currentUser != null && currentUser.uid != null){
+            firebase.database().ref(`users/${currentUser.uid}`).once('value', (v)=>{
+              let userVals = v.val();
+              if(userVals.viewedPosts == undefined){
+                userVals.viewedPosts = [window.location.query.p];
+                firebase.database().ref(`users/${currentUser.uid}`).update({
+                  viewedPosts: userVals.viewedPosts
+                });
+                firebase.database().ref(`posts/${window.location.query.p}`).update({
+                  views: bodyscope.post.views + 1
+                });
+              }
+              let newViewedPosts = userVals.viewedPosts;
+              if(!userVals.viewedPosts.includes(window.location.query.p)){
+                newViewedPosts.push(window.location.query.p);
+                firebase.database().ref(`posts/${window.location.query.p}`).update({
+                  views: bodyscope.post.views + 1
+                });
+              }
+              firebase.database().ref(`users/${currentUser.uid}`).update({
+                viewedPosts: newViewedPosts
+              });
+            });
+          }
+          checklist.updateViewCount = true;
+        }
       }
       updateScope(bodyscope);
     }, 1000);
