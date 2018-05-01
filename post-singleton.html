@@ -36,4 +36,5 @@
         <a href="/?t={{tag}}">{{tag}}</a>
     </span>
 </div>
-<button ng-if="admins[currentUser.uid] != undefined" class="post-remove" ng-click="removePost(post.___id___)">Remove post</button>
+<a ng-if="admins[currentUser.uid] != undefined" class="post-btn post-edit" href="/post/?postid={{post.___id___}}">Edit post</a>
+<button ng-if="admins[currentUser.uid] != undefined" class="post-btn post-remove" ng-click="removePost(post.___id___)">Remove post</button>

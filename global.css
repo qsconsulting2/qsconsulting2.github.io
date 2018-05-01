@@ -239,6 +239,28 @@ label.nav-link{
     font-family: "Dosis";
     font-weight: 400;
 }
+.post-btn{
+    font-family: "Dosis";
+    font-weight: 600;
+    outline: none;
+    -webkit-appearance: unset;
+    color: black;
+    background: lightgray;
+    border: 2px gray groove;
+    height: 30px;
+    text-decoration: none;
+    padding: 1px 6px 1px 6px;
+    border-width: 2px;
+    transition: background 1s;
+}
+.post-btn:hover{
+    color: black;
+    text-decoration: none;
+}
+.post-btn:focus{
+    text-decoration: none;
+    outline: none;
+}
 .post-remove{
     font-family: "Dosis";
     font-weight: 600;
