@@ -146,7 +146,7 @@
         if(bodyscope.postsDual != undefined){
           if(bodyscope.query){
             bodyscope.filteredPosts = bodyscope.posts.filter((p)=>{
-              return p.tags.includes(decodeURI(bodyscope.query));
+              return p.tags.multiIncludes(...JSON.parse(decodeURIComponent(bodyscope.query)));
             });
             bodyscope.showContent = false;
           }
@@ -156,7 +156,7 @@
         if(bodyscope.postsDual != undefined){
           if(bodyscope.query){
             bodyscope.filteredPosts = bodyscope.posts.filter((p)=>{
-              return (p.tags.includes(decodeURI(bodyscope.query)) || p.content.includes(decodeURI(bodyscope.query)) || p.title.includes(decodeURI(bodyscope.query)));
+              return (p.tags.includes(decodeURIComponent(bodyscope.query)) || p.content.includes(decodeURIComponent(bodyscope.query)) || p.title.includes(decodeURIComponent(bodyscope.query)));
             });
           }
         }
@@ -230,7 +230,8 @@
       'listeningToLogin': false,
       'listeningToLogout': false,
       'retrievedPersistence': false,
-      'updateViewCount': false
+      'updateViewCount': false,
+      'setSearchFormTag': false
     };
     setInterval(function(){
       if(document.querySelector("#lgin") && !checklist.listeningToLogin){
@@ -276,6 +277,13 @@
           }
           checklist.updateViewCount = true;
         }
+      }
+      if(document.querySelector('#searchFormTag') && !checklist.setSearchFormTag){
+        document.querySelector('#searchFormTag').addEventListener('submit',function(e){
+          document.querySelector('#t').value = JSON.stringify(document.querySelector('#t').value.replace(', ',',').split(','));
+          return true;
+        });
+        checklist.setSearchFormTag = true;
       }
       updateScope(bodyscope);
     }, 1000);
