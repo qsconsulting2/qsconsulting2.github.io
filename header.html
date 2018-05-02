@@ -9,11 +9,11 @@
     <a class="nav-link" ng-if="admins[currentUser.uid] != undefined" href="/post">Create a post</a>
     <span class="nav-right">
         <span class="span-one-element" ng-show="loggedIn == false">
-            <a class="nav-link" href="#" class="lgin">Login</a>
+            <a class="nav-link lgin" href="#">Login</a>
             <input class="nav-checkbox nav-button checkbox-to-button remember-me" name="rememberMe" type="checkbox" ng-change="fbSetPersistence(rememberMe)" ng-model="rememberMe">
         </span>
         <span class="span-one-element" ng-show="loggedIn == true">
-            <a class="nav-link" href="#" name="lgout" class="lgout">Log out</a>
+            <a class="nav-link lgout" href="#" name="lgout">Log out</a>
             <span class="nav-element">{{currentUser.name}}</span>
         </span>
     </span>
@@ -41,13 +41,13 @@
                     <a class="nav-link" ng-if="admins[currentUser.uid] != undefined" href="/post">Create a post</a>
                 </li>
                 <li class="nav-item w-100" ng-show="loggedIn == false">
-                    <a class="nav-link" href="#" class="lgin">Login</a>
+                    <a class="nav-link lgin" href="#">Login</a>
                 </li>
                 <li class="nav-item w-100" ng-show="loggedIn == false">
                     <input class="nav-checkbox nav-button checkbox-to-button remember-me" name="rememberMe" type="checkbox" ng-change="fbSetPersistence(rememberMe)" ng-model="rememberMe">
                 </li>
                 <li class="nav-item w-100" ng-show="loggedIn == true">
-                    <a class="nav-link" href="#" name="lgout" class="lgout">Log out</a>
+                    <a class="nav-link lgout" href="#" name="lgout">Log out</a>
                 </li>
                 <li class="nav-item w-100" ng-show="loggedIn == true">
                     <p class="nav-element">{{currentUser.name}}</p>
