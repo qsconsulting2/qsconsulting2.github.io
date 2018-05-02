@@ -10,6 +10,48 @@
   **/
   let bodyscope;
   let persistence;
+  Object.defineProperties(Array.prototype, {
+    'multipart': {
+      value: function(name) {
+        let rv = {};
+        for (let i = 0; i < this.length; i++) {
+          rv[`${name}${i}`] = this[i];
+        }
+        return rv;
+      },
+      writable: false,
+      enumerable: false
+    },
+    'multiIncludes': {
+      value: function(){
+        let foundAll = true;
+        [...arguments].forEach((arg)=>{
+          if(!this.includes(arg) && arg != ''){
+            foundAll = false;
+          }
+        });
+        return foundAll;
+      },
+      writable: false,
+      enumerable: false
+    }
+  });
+  Object.defineProperty(String.prototype, 'separate', {
+    value: function(amt) {
+      return this.match(new RegExp(`.{1,${amt}}`, 'g'));
+    },
+    writable: false,
+    enumerable: false
+  });
+  function objToReferableArray(obj){
+    let rv = [];
+    for(let kn in obj){
+      let kv = obj[kn];
+      kv.___id___ = kn;
+      rv.push(kv);
+    }
+    return rv;
+  }
   firebase.auth().getRedirectResult().then((result)=>{
     firebase.auth().onAuthStateChanged(user =>{
       let credential = result.credential;
@@ -82,34 +124,6 @@
       console.log(error);
       alert("Somehow you screwed up logging out.");
     });
-  }
-  Array.prototype.multipart = function(name) {
-    let rv = {};
-    for (let i = 0; i < this.length; i++) {
-      rv[`${name}${i}`] = this[i];
-    }
-    return rv;
-  };
-  Array.prototype.multiIncludes = function(){
-    let foundAll = true;
-    [...arguments].forEach((arg)=>{
-      if(!this.includes(arg) && arg != ''){
-        foundAll = false;
-      }
-    });
-    return foundAll;
-  };
-  String.prototype.separate = function(amt) {
-    return this.match(new RegExp(`.{1,${amt}}`, 'g'));
-  };
-  function objToReferableArray(obj){
-    let rv = [];
-    for(let kn in obj){
-      let kv = obj[kn];
-      kv.___id___ = kn;
-      rv.push(kv);
-    }
-    return rv;
   }
   function updateScope(scope){
     scope.$apply();
