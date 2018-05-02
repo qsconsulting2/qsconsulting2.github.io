@@ -245,15 +245,20 @@
       'listeningToLogout': false,
       'retrievedPersistence': false,
       'updateViewCount': false,
-      'setSearchFormTag': false
+      'setSearchFormTag': false,
+      'mobileNavbarFix': false
     };
     setInterval(function(){
-      if(document.querySelector("#lgin") && !checklist.listeningToLogin){
-        document.querySelector("#lgin").addEventListener('click', login, false);
+      if(document.querySelectorAll(".lgin") && !checklist.listeningToLogin){
+        document.querySelectorAll(".lgin").forEach((e)=>{
+          e.addEventListener('click', login, false);
+        });
         checklist.listeningToLogin = true;
       }
-      if(document.querySelector("#lgout") && !checklist.listeningToLogout){
-        document.querySelector("#lgout").addEventListener('click', logout, false);
+      if(document.querySelectorAll(".lgout") && !checklist.listeningToLogout){
+        document.querySelectorAll(".lgout").forEach((e)=>{
+          e.addEventListener('click', logout, false);
+        });
         checklist.listeningToLogout = true;
       }
       if(!checklist.retrievedPersistence){
@@ -299,6 +304,12 @@
           return true;
         });
         checklist.setSearchFormTag = true;
+      }
+      if(document.querySelector('.navbar-toggler.my-navbar-toggler') && !checklist.mobileNavbarFix){
+        document.querySelector('.navbar-toggler.my-navbar-toggler').addEventListener('click',function(e){
+          $($('#hidden-navbar-toggle').getAttribute('data-target')).collapse('toggle');
+        });
+        checklist.mobileNavbarFix = true;
       }
       updateScope(bodyscope);
     }, 1000);
