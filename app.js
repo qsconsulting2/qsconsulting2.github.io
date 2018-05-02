@@ -93,7 +93,7 @@
   Array.prototype.multiIncludes = function(){
     let foundAll = true;
     [...arguments].forEach((arg)=>{
-      if(!this.includes(arg)){
+      if(!this.includes(arg) && arg != ''){
         foundAll = false;
       }
     });
