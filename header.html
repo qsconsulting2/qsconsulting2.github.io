@@ -44,13 +44,13 @@
                     <a class="nav-link lgin" href="#">Login</a>
                 </li>
                 <li class="nav-item w-100" ng-show="loggedIn == false">
-                    <input class="nav-checkbox nav-button checkbox-to-button remember-me" name="rememberMe" type="checkbox" ng-change="fbSetPersistence(rememberMe)" ng-model="rememberMe">
+                    <input class="nav-checkbox nav-button checkbox-to-button remember-me bottom-li" name="rememberMe" type="checkbox" ng-change="fbSetPersistence(rememberMe)" ng-model="rememberMe">
                 </li>
                 <li class="nav-item w-100" ng-show="loggedIn == true">
                     <a class="nav-link lgout" href="#" name="lgout">Log out</a>
                 </li>
                 <li class="nav-item w-100" ng-show="loggedIn == true">
-                    <p class="nav-element">{{currentUser.name}}</p>
+                    <p class="nav-element bottom-li">{{currentUser.name}}</p>
                 </li>
             </ul>
         </div>
