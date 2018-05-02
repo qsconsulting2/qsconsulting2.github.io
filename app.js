@@ -279,6 +279,7 @@
         }
       }
       if(document.querySelector('#searchFormTag') && !checklist.setSearchFormTag){
+        document.querySelector('#searchFormTag').setAttribute('title', 'Separate tags with commas');
         document.querySelector('#searchFormTag').addEventListener('submit',function(e){
           document.querySelector('#t').value = JSON.stringify(document.querySelector('#t').value.replace(', ',',').split(','));
           return true;
