@@ -307,7 +307,7 @@
       }
       if(document.querySelector('.navbar-toggler.my-navbar-toggler') && !checklist.mobileNavbarFix){
         document.querySelector('.navbar-toggler.my-navbar-toggler').addEventListener('click',function(e){
-          $($('#hidden-navbar-toggle').getAttribute('data-target')).collapse('toggle');
+          $($('#hidden-navbar-toggle').attr('data-target')).collapse('toggle');
         });
         checklist.mobileNavbarFix = true;
       }
