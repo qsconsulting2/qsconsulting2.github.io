@@ -170,7 +170,7 @@
         if(bodyscope.postsDual != undefined){
           if(bodyscope.query){
             bodyscope.filteredPosts = bodyscope.posts.filter((p)=>{
-              return (p.tags.includes(decodeURIComponent(bodyscope.query)) || p.content.includes(decodeURIComponent(bodyscope.query)) || p.title.includes(decodeURIComponent(bodyscope.query)));
+              return (p.tags.includes(decodeURIComponent(bodyscope.query)) || p.content.toLowerCase().includes(decodeURIComponent(bodyscope.query).toLowerCase()) || p.title.toLowerCase().includes(decodeURIComponent(bodyscope.query).toLowerCase()));
             });
           }
         }
@@ -297,11 +297,13 @@
           checklist.updateViewCount = true;
         }
       }
-      if(document.querySelector('#searchFormTag') && !checklist.setSearchFormTag){
-        document.querySelector('#searchFormTag').setAttribute('title', 'Separate tags with commas');
-        document.querySelector('#searchFormTag').addEventListener('submit',function(e){
-          document.querySelector('#t').value = JSON.stringify(document.querySelector('#t').value.replace(', ',',').split(','));
-          return true;
+      if(document.querySelectorAll('.searchFormTag') && !checklist.setSearchFormTag){
+        document.querySelectorAll('.searchFormTag').forEach((el)=>{
+          el.setAttribute('title', 'Separate tags with commas');
+          el.addEventListener('submit',function(e){
+            el.querySelector('#t').value = JSON.stringify(el.querySelector('#t').value.replace(', ',',').split(','));
+            return true;
+          });
         });
         checklist.setSearchFormTag = true;
       }

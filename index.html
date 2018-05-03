@@ -32,6 +32,7 @@
     <script src="https://code.angularjs.org/1.6.9/angular-sanitize.min.js" charset="utf-8"></script>
     <script src="/js/nicEdit-latest.js" charset="utf-8"></script>
     <link href="/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="/codecolorer.css">
     <link rel="stylesheet" href="/global.css">
     <link rel="stylesheet" href="/constant.css">
     <script src="/app.js" charset="utf-8"></script>
@@ -40,63 +41,113 @@
 <body ng-app="mainApp" ng-controller="bodyController">
     <div class="_container">
         <div ng-include="header.url"></div>
-        <div class="row content" ng-if="viewMode == 'normal'">
-            <div class="ten columns leftcontent">
-                <h1>Home</h1>
-                <div class="post">
-                    <h1>
-                        Providing security-minded Software Development and Cryptocurrency Solutions.
-                    </h1>
-                    <p>
-                        Contact <strong><a href="mailto:q@qsconsulting.biz" class="p-link">q@qsconsulting.biz</a></strong> for custom programming & visit the blog for example usage of products and work.
-                    </p>
+        <!-- BEGIN DESKTOP CONTAINER -->
+        <span class="d-none d-sm-block">
+            <div class="row content" ng-if="viewMode == 'normal'">
+                <div class="ten columns leftcontent">
+                    <h1>Home</h1>
+                    <div class="post">
+                        <h1>
+                            Providing security-minded Software Development and Cryptocurrency Solutions.
+                        </h1>
+                        <p>
+                            Contact <strong><a href="mailto:q@qsconsulting.biz" class="p-link">q@qsconsulting.biz</a></strong> for custom programming & visit the blog for example usage of products and work.
+                        </p>
+                    </div>
+                </div>
+                <div ng-include="sidebar.url" id="sidebar" class="six columns">
+                    
                 </div>
             </div>
-            <div ng-include="sidebar.url" id="sidebar" class="six columns">
+            <div class="row content" ng-if="viewMode == 'search'">
+                <div class="ten columns leftcontent">
+                    <div ng-repeat="post in filteredPosts" ng-include="'/post-singleton.html'" class="post">
                 
-            </div>
-        </div>
-        <div class="row content" ng-if="viewMode == 'search'">
-            <div class="ten columns leftcontent">
-                <div ng-repeat="post in filteredPosts" ng-include="'/post-singleton.html'" class="post">
-            
+                    </div>
+                </div>
+                <div ng-include="sidebar.url" id="sidebar" class="six columns">
+                    
                 </div>
             </div>
-            <div ng-include="sidebar.url" id="sidebar" class="six columns">
-                
-            </div>
-        </div>
-        <div class="row content" ng-if="viewMode == 'targetPost'">
-            <div class="ten columns leftcontent">
-                <div class="post" ng-include="'/post-singleton.html'">
+            <div class="row content" ng-if="viewMode == 'targetPost'">
+                <div class="ten columns leftcontent">
+                    <div class="post" ng-include="'/post-singleton.html'">
 
+                    </div>
+                </div>
+                <div ng-include="sidebar.url" id="sidebar" class="six columns">
+                    
                 </div>
             </div>
-            <div ng-include="sidebar.url" id="sidebar" class="six columns">
-                
-            </div>
-        </div>
-        <div class="row content" ng-if="viewMode == 'tagSearch'">
-            <div class="ten columns leftcontent">
-                <div ng-repeat="post in filteredPosts" ng-include="'/post-singleton.html'" class="post">
-                
+            <div class="row content" ng-if="viewMode == 'tagSearch'">
+                <div class="ten columns leftcontent">
+                    <div ng-repeat="post in filteredPosts" ng-include="'/post-singleton.html'" class="post">
+                    
+                    </div>
+                </div>
+                <div ng-include="sidebar.url" id="sidebar" class="six columns">
+                    
                 </div>
             </div>
-            <div ng-include="sidebar.url" id="sidebar" class="six columns">
+            <div class="row content" ng-if="viewMode == 'notFound'">
+                <div class="ten columns leftcontent center">
+                    <h1>400 Bad Request</h1>
+                    <h6>
+                        "{{search}}" is not a valid query
+                    </h6>
+                </div>
+                <div ng-include="sidebar.url" id="sidebar" class="six columns">
+                    
+                </div>
+            </div>
+        </span>
+        <!-- END DESKTOP CONTAINER -->
+        <!-- BEGIN MOBILE CONTAINER -->
+        <span class="d-sm-none">
+            <div class="row content" ng-if="viewMode == 'normal'">
+                <div class="sixteen columns leftcontent">
+                    <h1>Home</h1>
+                    <div class="post">
+                        <h1>
+                            Providing security-minded Software Development and Cryptocurrency Solutions.
+                        </h1>
+                        <p>
+                            Contact <strong><a href="mailto:q@qsconsulting.biz" class="p-link">q@qsconsulting.biz</a></strong> for custom programming & visit the blog for example usage of products and work.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row content" ng-if="viewMode == 'search'">
+                <div class="sixteen columns leftcontent">
+                    <div ng-repeat="post in filteredPosts" ng-include="'/post-singleton.html'" class="post">
                 
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row content" ng-if="viewMode == 'notFound'">
-            <div class="ten columns leftcontent center">
-                <h1>400 Bad Request</h1>
-                <h6>
-                    "{{search}}" is not a valid query
-                </h6>
+            <div class="row content" ng-if="viewMode == 'targetPost'">
+                <div class="sixteen columns leftcontent">
+                    <div class="post" ng-include="'/post-singleton.html'">
+
+                    </div>
+                </div>
             </div>
-            <div ng-include="sidebar.url" id="sidebar" class="six columns">
-                
+            <div class="row content" ng-if="viewMode == 'tagSearch'">
+                <div class="sixteen columns leftcontent">
+                    <div ng-repeat="post in filteredPosts" ng-include="'/post-singleton.html'" class="post">
+                    
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="row content" ng-if="viewMode == 'notFound'">
+                <div class="sixteen columns leftcontent center">
+                    <h1>400 Bad Request</h1>
+                    <h6>
+                        "{{search}}" is not a valid query
+                    </h6>
+                </div>
+            </div>
+        </span>
+        <!-- END MOBILE CONTAINER -->
         <input type="hidden" id="showContent" ng-value="showContent">
         <div class="row footer" ng-include="footer.url"></div>
     </div>

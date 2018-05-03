@@ -31,6 +31,7 @@
     <script src="https://code.angularjs.org/1.6.9/angular-messages.min.js" charset="utf-8"></script>
     <script src="https://code.angularjs.org/1.6.9/angular-sanitize.min.js" charset="utf-8"></script>
     <link href="./css/products.css" rel="stylesheet">
+    <link rel="stylesheet" href="/codecolorer.css">
     <link rel="stylesheet" href="/global.css">
     <link rel="stylesheet" href="/constant.css">
     <script src="/app.js" charset="utf-8"></script>
@@ -39,17 +40,29 @@
 <body ng-app="mainApp" ng-controller="bodyController">
     <div class="_container">
         <div ng-include="header.url"></div>
-        <div class="row content" ng-if="viewMode == 'normal'">
-            <div class="ten columns leftcontent">
-                <h1>Products</h1>
-                <div class="product">
-                    Coming Soon: Product sales information will go here.  Please check back in the near future for updated listings.
+        <span class="d-none d-sm-block">
+            <div class="row content" ng-if="viewMode == 'normal'">
+                <div class="ten columns leftcontent">
+                    <h1>Products</h1>
+                    <div class="product">
+                        Coming Soon: Product sales information will go here.  Please check back in the near future for updated listings.
+                    </div>
+                </div>
+                <div ng-include="sidebar.url" id="sidebar" class="six columns">
+                    
                 </div>
             </div>
-            <div ng-include="sidebar.url" id="sidebar" class="six columns">
-                
+        </span>
+        <span class="d-sm-none">
+            <div class="row content" ng-if="viewMode == 'normal'">
+                <div class="sixteen columns leftcontent">
+                    <h1>Products</h1>
+                    <div class="product">
+                        Coming Soon: Product sales information will go here.  Please check back in the near future for updated listings.
+                    </div>
+                </div>
             </div>
-        </div>
+        </span>
         <div class="row footer" ng-include="footer.url"></div>
     </div>
 </body>

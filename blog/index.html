@@ -32,6 +32,7 @@
     <script src="https://code.angularjs.org/1.6.9/angular-sanitize.min.js" charset="utf-8"></script>
     <script src="/js/nicEdit-latest.js" charset="utf-8"></script>
     <link href="./css/blog.css" rel="stylesheet">
+    <link rel="stylesheet" href="/codecolorer.css">
     <link rel="stylesheet" href="/global.css">
     <link rel="stylesheet" href="/constant.css">
     <script src="/app.js" charset="utf-8"></script>
@@ -40,16 +41,27 @@
 <body ng-app="mainApp" ng-controller="bodyController">
     <div class="_container">
         <div ng-include="header.url"></div>
-        <div class="row content" ng-if="viewMode == 'normal'">
-            <div class="ten columns leftcontent">
-                <div ng-repeat="post in posts" ng-include="'/post-singleton.html'" class="post">
+        <span class="d-none d-sm-block">
+            <div class="row content" ng-if="viewMode == 'normal'">
+                <div class="ten columns leftcontent">
+                    <div ng-repeat="post in posts" ng-include="'/post-singleton.html'" class="post">
+                        
+                    </div>
+                </div>
+                <div ng-include="sidebar.url" id="sidebar" class="six columns">
                     
                 </div>
             </div>
-            <div ng-include="sidebar.url" id="sidebar" class="six columns">
-                
+        </span>
+        <span class="d-sm-none">
+            <div class="row content" ng-if="viewMode == 'normal'">
+                <div class="sixteen columns leftcontent">
+                    <div ng-repeat="post in posts" ng-include="'/post-singleton.html'" class="post">
+                        
+                    </div>
+                </div>
             </div>
-        </div>
+        </span>
         <input type="hidden" id="showContent" ng-value="showContent">
         <div class="row footer" ng-include="footer.url"></div>
     </div>
